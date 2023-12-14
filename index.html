@@ -1,0 +1,61 @@
+<style>
+  body { margin: 0; }
+  #main { 
+    position: relative; 
+    width: 870px;
+    margin: 0 auto;
+  }
+  img {
+    width: 100%
+  }
+  #gameContainer {
+    position: absolute;
+    bottom: 269px;
+    left: 367px;
+    rotate: -10deg;
+  }
+  table { border-collapse: collapse; }
+  td {
+    width: 40px;
+    height: 40px;
+    border: 0 solid black;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial;
+    text-shadow: 0 0 5px black;
+  }
+  tr:first-of-type td { border-bottom-width: 3px; }
+  tr:last-of-type td { border-top-width: 3px; }
+  td:first-of-type { border-right-width: 3px; }
+  td:last-of-type { border-left-width: 3px; }
+  td[checked="X"]:before {
+    content: "X";
+    color: #30f330;
+  }
+  td[checked="O"]:before {
+    content: "O";
+    color: #f11212;
+  }
+</style>
+<div id="main">
+  <img src="./bg.png">
+  <div id="gameContainer">
+    <table>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+</div>
+<script>
+  let playerX = true;
+  document.querySelectorAll("td").forEach((i, index) => {
+    i.onclick = () => {
+      if (!i.getAttribute("checked")) {
+        i.setAttribute("checked", playerX ? "X" : "O");
+        playerX = !playerX;
+      }
+    }
+  })
+</script>
